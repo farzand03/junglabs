@@ -1,0 +1,23 @@
+const parallex_el = document.querySelectorAll(".parallex");
+
+let xValue = 0, yValue = 0;
+
+window.addEventListener("mousemove", (e) => {
+    xValue = e.clientX - window.innerWidth/2;
+    yValue = e.clientY - window.innerHeight/2;
+    
+    parallex_el.forEach(el => {
+        let speedx = el.dataset.speedx
+        let speedy = el.dataset.speedy
+        el.style.transform = `translateX(calc(-50% + ${-xValue * speedx}px)) translateY(calc(-50% + ${yValue * speedy}px))`;
+    });
+
+});
+
+function openNav() {
+    document.getElementById("sideNav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("sideNav").style.width = "0";
+}
